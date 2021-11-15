@@ -1,0 +1,20 @@
+{
+  "name": "programming-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "make-folder": "mkdir assests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AyoubVD/Programming-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AyoubVD/Programming-web/issues"
+  },
+  "homepage": "https://github.com/AyoubVD/Programming-web#readme"
+}
