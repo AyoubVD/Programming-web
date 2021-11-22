@@ -1,0 +1,31 @@
+$prim-blue: rgba(16,14,74,1);
+$prim-white: white;
+$prim-pink: pink;
+$prim-grey:rgba(255,255,255,0.9);
+$prim-black: black;
+
+$font-size-large: 32px;
+$font-size-medium: 24px;
+$font-size-small: 18px;
+body{
+    background-color: $prim-blue;
+    color: $prim-white;
+
+    margin: 0;
+}
+
+h1,h2{
+    color: $prim-pink;
+}
+
+//nav component
+.c-nav{
+    background-color: $prim-grey;
+    color: $prim-black;
+}
+
+.c-nav-list{
+    list-style-type: disc;
+
+    display: flex;
+}
