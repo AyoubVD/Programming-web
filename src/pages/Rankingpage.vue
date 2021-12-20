@@ -4,11 +4,11 @@
     <h1>Ranking</h1>
     <div v-for="song in songs" :key="song.id">
       {{ song.title }} - {{ song.artist.name }} - NaN hier komt som van punten NaN
-      <!-- <div v-for="vote in votes" :key="vote.id">
+       <div v-for="vote in votes" :key="vote.id">
         <div v-if="vote.songID == song.id">
           {{ vote.points }}
         </div>
-      </div> -->
+      </div> 
     </div>
   </div>
 </template>
@@ -21,6 +21,7 @@ export default {
     return {
       songs: [],
       votes: [],
+      count:0,
     };
   },
   computed: {
@@ -119,19 +120,7 @@ export default {
             // return the new object
             return song;
           }),
-          // loop over array songs with forEach method
-          songs.map((song) => {
-            const vote = votes.find((vote) => vote.songID == song.id);
-              songs.map((song) => {
-                const sum = votes.find((vote) => vote.songID == song.id);
-              }),
-          
-            // replace the id by the artist object
-            song.id = vote;
-
-            // return the new object
-            return song;
-          })
+          console.log({count})
           
 
 
