@@ -1,20 +1,21 @@
 {
-  "name": "programming-web",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "eurosong-festival",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "make-folder": "mkdir assets"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AyoubVD/Programming-web.git"
+  "dependencies": {
+    "@vue/cli": "^4.5.15",
+    "core-js": "^3.6.5",
+    "vue": "^2.6.11"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AyoubVD/Programming-web/issues"
-  },
-  "homepage": "https://github.com/AyoubVD/Programming-web#readme"
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  }
 }
