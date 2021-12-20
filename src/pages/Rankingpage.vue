@@ -60,15 +60,19 @@ export default {
         });
     },
 
-    fetchVO() {
+    fetchVO(song) {
       // Get all songs
-      const url = "http://webservies.be/eurosong/Votes";
+      const url = "http://webservies.be/eurosong/Songs/"+i+"/points";
 
       fetch(url)
         .then((response) => {
           return response.json();
         })
-        .then((response) => (this.votes = response));
+        .then((response) => (this.votes = response))
+        
+        
+
+        
     },
 
     fetchArtists(songs) {
@@ -82,7 +86,7 @@ export default {
         })
         .then((artists) => {
           // loop over array songs with forEach method
-          songs.map((song) => {
+          songs.map((response) => {
             // find the artist in an array
             const artist = artists.find((artist) => artist.id == song.artist);
 
@@ -98,7 +102,7 @@ export default {
         });
     },
 
-    fetchVotes(songs) {
+/*     fetchVotes(songs) {
       // Get all artist
       const url = "http://webservies.be/eurosong/Votes";
 
@@ -128,7 +132,7 @@ export default {
           // change data of songs, so everything will get rerenderd;
           this.songs = songs;
         });
-    },
+    }, */
   },
 };
 </script>
