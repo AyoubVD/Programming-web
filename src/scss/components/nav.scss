@@ -18,3 +18,25 @@
         }
     }
 }
+.butt{
+    background: #2B2D2F;
+    height: 80px;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    font: bold 1.25rem/1 poppins;
+    color: #71DFBE;
+}
+
+.voting{
+    
+  color: var(--color);
+  transition: 0.25s;
+  
+  &:hover,
+  &:focus { 
+    border-color: var(--hover);
+    color: black;
+}
+}

@@ -1,15 +1,15 @@
 <template>
   <div>
-    <button @click="goToPage('home')">Go to home</button>
+    <button id="butt" @click="goToPage('home')">Go to home</button>
     <h1>Ranking</h1>
-    <div v-for="song in songs" :key="song.id">
-      {{ song.title }} - {{ song.artist.name }} - NaN hier komt som van punten NaN
+    <tr v-for="song in songs" :key="song.id">
+      <td id="title">{{ song.title }}</td> - <td id="artist">{{ song.artist.name }}</td>  - <td id="points">NaN hier komt som van punten NaN</td> 
        <div v-for="vote in votes" :key="vote.id">
         <div v-if="vote.songID == song.id">
           {{ vote.points }}
         </div>
       </div> 
-    </div>
+    </tr>
   </div>
 </template>
 
@@ -86,7 +86,7 @@ export default {
         })
         .then((artists) => {
           // loop over array songs with forEach method
-          songs.map((response) => {
+          songs.map((song) => {
             // find the artist in an array
             const artist = artists.find((artist) => artist.id == song.artist);
 
