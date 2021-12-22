@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button @click="goToPage('home')">
+        <button id="butt" @click="goToPage('home')">
             Go to home
         </button>
         <h1>
@@ -15,7 +15,7 @@
         />
 
         <div v-for="(vote, index) in votes" :key="index" >
-            <button @click="addVote(vote.points)" v-if="!vote.isVoted">
+            <button class="voting" @click="addVote(vote.points)" v-if="!vote.isVoted">
                 Add {{ vote.points}} points
             </button>
         </div>
