@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <!-- Button -->
@@ -13,23 +14,19 @@
         <tr>
           <!-- Table headers -->
           <th class="hoofd">Ranking for</th>
+          <th class="hoofd">Play song</th>
           <th class="hoofd">Title</th>
           <th class="hoofd">Artist</th>
           <th class="hoofd">Points</th>
-          <th class="hoofd">Out of</th>
-          <th class="hoofd">% of Total</th>
         </tr>
         <!-- Items themselves -->
         <!-- For every song in the fetched JSON -->
         <tr v-for="(song, i) in songs" :key="i">
-          <!-- Ranking number -->
           <td>#{{ i + 1 }}</td>
-          <!-- Song details -->
+          <td><iframe :src="song.spotify" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></td>
           <td>{{ song.title }}</td>
           <td>{{ song.artist }}</td>
           <td>{{ song.totalPoints }}</td>
-          <td>{{ song.allPoints }}</td>
-          <td>{{ song.percentage }}%</td>
         </tr>
       </table>
     </div>
@@ -46,12 +43,10 @@ export default {
     };
   },
   methods: {
-    //Method to change page to clicked item
     goToPage(page) {
       this.$emit("change-page", page);
     },
     fetchSongs() {
-      // Get all songs from Elke's API
       const url = "http://webservies.be/eurosong/Songs";
 
       fetch(url)
@@ -94,47 +89,33 @@ export default {
           return response.json();
         })
         .then((votes) => {
-          //Ininitalize allPoints that is going to show the total amount of points that all songs have together
           let allPoints = 0;
           //Loop over songs
           songs.map((song) => {
-            //Initialize new property of class song and set it equal to 0 (this will later on get filled with correct amount of votes)
             song.totalPoints = 0;
-            //Find the correct votes for the corresponding song by filtering
             votes
               .filter((vote) => vote.songID == song.id)
-              //For every vote that was found add the int (of the vote) to the total points and also to the corresponding song
               .forEach((element) => {
                 if (element.songID == song.id) {
                   song.totalPoints += element.points;
                   allPoints += element.points;
                 }
               });
-            
-            //Return song with all new data added
             return song;
           });
 
-          //Calculate for each song the % of votes it holds compared to the previously calculated total & calculate total amount of votes
-          let fullTotal = 0;
-          songs.forEach((song) => {
-            song.percentage = Number(
-              ((song.totalPoints / allPoints) * 100).toFixed(2)
-            );
-            fullTotal += song.totalPoints
-          });
+            let fullTotal = 0;
+            songs.forEach((song) => {
+              song.percentage = Number(
+                ((song.totalPoints / allPoints) * 100).toFixed(2)
+              );
+              fullTotal += song.totalPoints
+            });
 
-          //Set the full total to each song as a property
-          songs.forEach((song) => {
-            song.allPoints = fullTotal
-          })
-
-          //Get the correct ranking for the songs with all correct data
           this.songs = songs.sort((y, z) => z.totalPoints - y.totalPoints);
         });
     },
   },
-  //On load of this page perform the mounted method
   mounted() {
     this.fetchSongs();
   },
